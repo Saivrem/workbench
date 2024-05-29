@@ -4,10 +4,7 @@ import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 
 @Slf4j
 @UtilityClass
@@ -41,6 +38,15 @@ public class FileUtils {
             }
         } catch (IOException e) {
             log.error("{}: {}", e.getClass().getSimpleName(), e.getMessage());
+        }
+    }
+
+    public static void removeDirectories(Path origin) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(origin)) {
+            if (!stream.iterator().hasNext()) {
+                Files.delete(origin);
+            }
+        } catch (IOException ignored) {
         }
     }
 }

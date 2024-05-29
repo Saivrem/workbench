@@ -11,7 +11,9 @@ import java.util.function.Function;
 public enum Operation {
 
     BACKUP(params -> new BackupOperationExecutor(params, false)),
-    RESTORE(params -> new BackupOperationExecutor(params, true));
+    RESTORE(params -> new BackupOperationExecutor(params, true)),
+    ZIP(params -> new ZipOperationExecutor(params, false)),
+    UNZIP(params -> new ZipOperationExecutor(params, true));
 
     private final Function<ParamsMap.Params, Runnable> executorProvider;
 }

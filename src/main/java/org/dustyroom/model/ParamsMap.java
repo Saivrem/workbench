@@ -44,5 +44,8 @@ public class ParamsMap {
     public static class Params {
         private String backupOrigin;
         private String backupDestination;
+        private String zipOrigin;
+        private String zipDestination;
+        private List<String> restrictedFiles;
     }
 }
