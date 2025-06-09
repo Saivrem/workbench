@@ -1,8 +1,9 @@
-package org.dustyroom.other;
+package org.dustyroom.filevisitor;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.dustyroom.duplicate_processing.HashedFileInfo;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
@@ -29,7 +30,7 @@ public class DuplicateFileVisitor extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
         if (attrs.isRegularFile()) {
-            log.info("Regular file {}", file);
+            log.debug("Regular file {}", file);
             try {
                 String fileHash = calculateFileHash(file.toFile(), hashAlgorithm);
                 HashedFileInfo hashedFileInfo = new HashedFileInfo(file.getFileName(), file.getParent(), file.toAbsolutePath(), fileHash);

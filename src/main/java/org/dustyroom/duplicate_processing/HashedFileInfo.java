@@ -1,4 +1,4 @@
-package org.dustyroom.other;
+package org.dustyroom.duplicate_processing;
 
 import java.nio.file.Path;
 import java.util.Objects;
