@@ -12,6 +12,16 @@ Receives a JSON file as a config passed to args[0]
         "backupOrigin": "/path/to/origin",
         "backupDestination": "/path/to/destination"
       }
+    ],
+    "ZIP": [
+      {
+        "zipOrigin": "path/to/origin",
+        "zipDestination": "/path/to/destination",
+        "restrictedFiles": [
+          "string",
+          "string2"
+        ]
+      }
     ]
   }
 }
