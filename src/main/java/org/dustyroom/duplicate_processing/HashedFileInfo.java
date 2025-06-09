@@ -11,10 +11,15 @@ public record HashedFileInfo(Path fileName, Path parent, Path absolutePath, Stri
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
-        if (obj instanceof HashedFileInfo dpo) {
-            return Objects.equals(hashSum, dpo.hashSum());
+        if (obj instanceof HashedFileInfo hfi) {
+            return Objects.equals(hashSum(), hfi.hashSum());
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hashSum());
     }
 
     @Override
